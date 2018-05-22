@@ -1,300 +1,332 @@
+export interface BNLike {
+  words: number[];
+
+  clone(): any;
+
+  [name: string]: any;
+}
+
+export interface BNLikeCtor {
+  new(num: number, endian?: string);
+
+  new(num: number, base?: number, endian?: string);
+
+  new(num: number, base?: number | string, endian?: string);
+
+  [name: string]: any;
+}
+
+export interface BigNumObject {
+  hi: number;
+  lo: number;
+}
+
+export interface ArrayLikeCtor {
+  new(size: number);
+
+  allocUnsafe?(size: number);
+}
+
 export class N64 {
   hi: number;
   lo: number;
   sign: number;
 
-  constructor(sign: any);
+  constructor(sign: number);
 
-  abs(): any;
+  abs(): this;
 
-  add(b: any): any;
+  add(b: N64): this;
 
-  addn(num: any): any;
+  addn(num: number): this;
 
-  and(b: any): any;
+  and(b: N64): this;
 
-  andln(num: any): any;
+  andln(num: number): this;
 
-  andn(num: any): any;
+  andn(num: number): this;
 
-  bitLength(): any;
+  bitLength(): number;
 
-  byteLength(): any;
+  byteLength(): number;
 
-  clone(): any;
+  clone(): this;
 
-  cmp(b: any): any;
+  cmp(b: N64): number;
 
-  cmpn(num: any): any;
+  cmpn(num: number): number;
 
-  div(b: any): any;
+  div(b: N64): this;
 
-  divn(num: any): any;
+  divn(num: number): this;
 
-  eq(b: any): any;
+  eq(b: N64): this;
 
-  eqn(num: any): any;
+  eqn(num: number): this;
 
-  from(num: any, base: any): any;
+  from(num: number | string | boolean | BNLike | ArrayLike | BigNumObject | null, base?: number | string): this;
 
-  fromBE(data: any): any;
+  fromBE(data: ArrayLike): this;
 
-  fromBN(num: any): any;
+  fromBN(num: BNLike): this;
 
-  fromBits(hi: any, lo: any): any;
+  fromBits(hi: number, lo: number): this;
 
-  fromBool(value: any): any;
+  fromBool(value: boolean): this;
 
-  fromInt(num: any): any;
+  fromInt(num: number): this;
 
-  fromJSON(json: any): any;
+  fromJSON(json: string): this;
 
-  fromLE(data: any): any;
+  fromLE(data: ArrayLike): this;
 
-  fromNumber(num: any): any;
+  fromNumber(num: number): this;
 
-  fromObject(num: any): any;
+  fromObject(num: BigNumObject): this;
 
-  fromRaw(data: any): any;
+  fromRaw(data: ArrayLike): any;
 
-  fromString(str: any, base: any): any;
+  fromString(str: string, base?: number | string): any;
 
-  getb(pos: any): any;
+  getb(pos: number): number;
 
-  gt(b: any): any;
+  gt(b: N64): boolean;
 
-  gte(b: any): any;
+  gte(b: N64): boolean;
 
-  gten(num: any): any;
+  gten(num: number): boolean;
 
-  gtn(num: any): any;
+  gtn(num: number): boolean;
 
-  iabs(): any;
+  /**
+   * In-place abs
+   */
+  iabs(): this;
 
-  iadd(b: any): any;
+  iadd(b: N64): this;
 
-  iaddn(num: any): any;
+  iaddn(num: number): this;
 
-  iand(b: any): any;
+  iand(b: N64): this;
 
-  iandn(num: any): any;
+  iandn(num: number): this;
 
-  idiv(b: any): any;
+  idiv(b: N64): this;
 
-  idivn(num: any): any;
+  idivn(num: number): this;
 
-  imaskn(bit: any): any;
+  imaskn(bit: number): this;
 
-  imod(b: any): any;
+  imod(b: N64): this;
 
-  imodn(num: any): any;
+  imodn(num: number): this;
 
-  imul(b: any): any;
+  imul(b: N64): this;
 
-  imuln(num: any): any;
+  imuln(num: number): this;
 
-  ineg(): any;
+  ineg(): this;
 
-  inject(b: any): any;
+  inject(b: N64): this;
 
-  inot(): any;
+  inot(): this;
 
-  inspect(): any;
+  inspect(): string;
 
-  ior(b: any): any;
+  ior(b: N64): this;
 
-  iorn(num: any): any;
+  iorn(num: number): this;
 
-  ipow(b: any): any;
+  ipow(b: N64): this;
 
-  ipown(num: any): any;
+  ipown(num: number): this;
 
-  isEven(): any;
+  isEven(): boolean;
 
-  isNeg(): any;
+  isNeg(): boolean;
 
-  isOdd(): any;
+  isOdd(): boolean;
 
-  isSafe(): any;
+  isSafe(): boolean;
 
-  isZero(): any;
+  isZero(): boolean;
 
-  ishl(b: any): any;
+  ishl(b: N64): this;
 
-  ishln(bits: any): any;
+  ishln(bits: number): this;
 
-  ishr(b: any): any;
+  ishr(b: N64): this;
 
-  ishrn(bits: any): any;
+  ishrn(bits: number): this;
 
-  isqr(): any;
+  isqr(): this;
 
-  isub(b: any): any;
+  isub(b: N64): this;
 
-  isubn(num: any): any;
+  isubn(num: number): this;
 
-  iushr(b: any): any;
+  iushr(b: N64): this;
 
-  iushrn(bits: any): any;
+  iushrn(bits: number): this;
 
-  ixor(b: any): any;
+  ixor(b: N64): this;
 
-  ixorn(num: any): any;
+  ixorn(num: number): this;
 
-  join(hi: any, lo: any): any;
+  join(hi: number, lo: number): this;
 
-  lt(b: any): any;
+  lt(b: N64): boolean;
 
-  lte(b: any): any;
+  lte(b: N64): boolean;
 
-  lten(num: any): any;
+  lten(num: number): boolean;
 
-  ltn(num: any): any;
+  ltn(num: number): boolean;
 
-  maskn(bit: any): any;
+  maskn(bit: number): this;
 
-  mod(b: any): any;
+  mod(b: N64): this;
 
-  modn(num: any): any;
+  modn(num: number): this;
 
-  mul(b: any): any;
+  mul(b: N64): this;
 
-  muln(num: any): any;
+  muln(num: number): this;
 
-  neg(): any;
+  neg(): this;
 
-  not(): any;
+  not(): this;
 
-  or(b: any): any;
+  or(b: N64): this;
 
-  orb(pos: any, ch: any): any;
+  orb(pos: number, ch: number): this;
 
-  orn(num: any): any;
+  orn(num: number): this;
 
-  pow(b: any): any;
+  pow(b: N64): this;
 
-  pown(num: any): any;
+  pown(num: number): this;
 
-  readBE(data: any, off: any): any;
+  readBE(data: ArrayLike, off: number): this;
 
-  readLE(data: any, off: any): any;
+  readLE(data: ArrayLike, off: number): this;
 
-  readRaw(data: any, off: any): any;
+  readRaw(data: ArrayLike, off: number): this;
 
-  set(num: any): any;
+  set(num: number): this;
 
-  setb(pos: any, ch: any): any;
+  setb(pos: number, ch: number): this;
 
-  setn(bit: any, val: any): any;
+  setn(bit: number, val: number): any;
 
-  shl(b: any): any;
+  shl(b: N64): this;
 
-  shln(bits: any): any;
+  shln(bits: number): this;
 
-  shr(b: any): any;
+  shr(b: N64): this;
 
-  shrn(bits: any): any;
+  shrn(bits: number): this;
 
-  sqr(): any;
+  sqr(): this;
 
-  sub(b: any): any;
+  sub(b: N64): this;
 
-  subn(num: any): any;
+  subn(num: number): this;
 
-  testn(bit: any): any;
+  testn(bit: number): this;
 
-  toBE(ArrayLike: any): any;
+  toBE(ArrayLike: ArrayLikeCtor): ArrayLike;
 
-  toBN(BN: any): any;
+  toBN(BN: BNLikeCtor): BNLike;
 
-  toBits(): any;
+  toBits(): [number, number];
 
-  toBool(): any;
+  toBool(): boolean;
 
-  toDouble(): any;
+  toDouble(): number;
 
-  toI64(): any;
+  toI64(): I64;
 
-  toInt(): any;
+  toInt(): number;
 
-  toJSON(): any;
+  toJSON(): string;
 
-  toLE(ArrayLike: any): any;
+  toLE(ArrayLike: ArrayLikeCtor): ArrayLike;
 
-  toNumber(): any;
+  toNumber(): number;
 
-  toObject(): any;
+  toObject(): BigNumObject;
 
-  toRaw(ArrayLike: any): any;
+  toRaw(ArrayLike: ArrayLikeCtor): ArrayLike;
 
-  toString(base: any, pad: any): any;
+  toString(base?: number | string, pad?: number): any;
 
-  toU64(): any;
+  toU64(): U64;
 
-  ushr(b: any): any;
+  ushr(b: N64): this;
 
-  ushrn(bits: any): any;
+  ushrn(bits: number): this;
 
-  writeBE(data: any, off: any): any;
+  writeBE(data: ArrayLike, off: number): number;
 
-  writeLE(data: any, off: any): any;
+  writeLE(data: ArrayLike, off: number): number;
 
-  writeRaw(data: any, off: any): any;
+  writeRaw(data: ArrayLike, off: number): number;
 
-  xor(b: any): any;
+  xor(b: N64): this;
 
-  xorn(num: any): any;
+  xorn(num: number): this;
 
-  static from(num: any, base: any): any;
+  static from(num: number | string | boolean | BNLike | ArrayLike | BigNumObject | null, base?: number | string): this;
 
-  static fromBE(data: any): any;
+  static fromBE(data: ArrayLike): this;
 
-  static fromBN(num: any): any;
+  static fromBN(num: BNLike): this;
 
-  static fromBits(hi: any, lo: any): any;
+  static fromBits(hi: number, lo: number): this;
 
-  static fromBool(value: any): any;
+  static fromBool(value: boolean): this;
 
-  static fromInt(num: any): any;
+  static fromInt(num: number): this;
 
-  static fromJSON(json: any): any;
+  static fromJSON(json: string): this;
 
-  static fromLE(data: any): any;
+  static fromLE(data: ArrayLike): this;
 
-  static fromNumber(num: any): any;
+  static fromNumber(num: number): this;
 
-  static fromObject(obj: any): any;
+  static fromObject(obj: BigNumObject): this;
 
-  static fromRaw(data: any): any;
+  static fromRaw(data: ArrayLike): this;
 
-  static fromString(str: any, base: any): any;
+  static fromString(str: string, base?: number | string): this;
 
-  static isI64(obj: any): any;
+  static isI64(obj: any): boolean;
 
-  static isN64(obj: any): any;
+  static isN64(obj: any): boolean;
 
-  static isU64(obj: any): any;
+  static isU64(obj: any): boolean;
 
-  static max(a: any, b: any): any;
+  static max(a: N64, b: N64): N64;
 
-  static min(a: any, b: any): any;
+  static min(a: N64, b: N64): N64;
 
-  static pow(num: any, exp: any): any;
+  static pow(num: number, exp: number): this;
 
-  static random(): any;
+  static random(): this;
 
-  static readBE(data: any, off: any): any;
+  static readBE(data: ArrayLike, off: number): this;
 
-  static readLE(data: any, off: any): any;
+  static readLE(data: ArrayLike, off: number): this;
 
-  static readRaw(data: any, off: any): any;
+  static readRaw(data: ArrayLike, off: number): this;
 
-  static shift(num: any, bits: any): any;
+  static shift(num: number, bits: number): this;
 
 }
 
 export class I64 extends N64 {
-  constructor(num?: any, base?: any);
+  constructor(num: number | string | boolean | BNLike | ArrayLike | BigNumObject | null, base?: number | string);
 
   static LONG_MIN: Number;
   static LONG_MAX: Number;
@@ -307,7 +339,7 @@ export class I64 extends N64 {
 }
 
 export class U64 extends N64 {
-  constructor(num?: any, base?: any);
+  constructor(num: number | string | boolean | BNLike | ArrayLike | BigNumObject | null, base?: number | string);
 
   static ULONG_MIN: Number;
   static ULONG_MAX: Number;
