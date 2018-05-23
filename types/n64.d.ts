@@ -24,7 +24,7 @@ export interface BigNumObject {
 export interface ArrayLikeCtor {
   new(size: number);
 
-  allocUnsafe?(size: number);
+  allocUnsafe?(size: number): ArrayLike<number>;
 }
 
 export class N64 {
@@ -64,9 +64,9 @@ export class N64 {
 
   eqn(num: number): this;
 
-  from(num: number | string | boolean | BNLike | ArrayLike | BigNumObject | null, base?: number | string): this;
+  from(num: number | string | boolean | BNLike | ArrayLike<number> | BigNumObject | null, base?: number | string): this;
 
-  fromBE(data: ArrayLike): this;
+  fromBE(data: ArrayLike<number>): this;
 
   fromBN(num: BNLike): this;
 
@@ -78,13 +78,13 @@ export class N64 {
 
   fromJSON(json: string): this;
 
-  fromLE(data: ArrayLike): this;
+  fromLE(data: ArrayLike<number>): this;
 
   fromNumber(num: number): this;
 
   fromObject(num: BigNumObject): this;
 
-  fromRaw(data: ArrayLike): any;
+  fromRaw(data: ArrayLike<number>): any;
 
   fromString(str: string, base?: number | string): any;
 
@@ -207,11 +207,11 @@ export class N64 {
 
   pown(num: number): this;
 
-  readBE(data: ArrayLike, off: number): this;
+  readBE(data: ArrayLike<number>, off: number): this;
 
-  readLE(data: ArrayLike, off: number): this;
+  readLE(data: ArrayLike<number>, off: number): this;
 
-  readRaw(data: ArrayLike, off: number): this;
+  readRaw(data: ArrayLike<number>, off: number): this;
 
   set(num: number): this;
 
@@ -235,7 +235,7 @@ export class N64 {
 
   testn(bit: number): this;
 
-  toBE(ArrayLike: ArrayLikeCtor): ArrayLike;
+  toBE(ArrayLike: ArrayLikeCtor): ArrayLike<number>;
 
   toBN(BN: BNLikeCtor): BNLike;
 
@@ -251,13 +251,13 @@ export class N64 {
 
   toJSON(): string;
 
-  toLE(ArrayLike: ArrayLikeCtor): ArrayLike;
+  toLE(ArrayLike: ArrayLikeCtor): ArrayLike<number>;
 
   toNumber(): number;
 
   toObject(): BigNumObject;
 
-  toRaw(ArrayLike: ArrayLikeCtor): ArrayLike;
+  toRaw(ArrayLike: ArrayLikeCtor): ArrayLike<number>;
 
   toString(base?: number | string, pad?: number): any;
 
@@ -267,19 +267,19 @@ export class N64 {
 
   ushrn(bits: number): this;
 
-  writeBE(data: ArrayLike, off: number): number;
+  writeBE(data: ArrayLike<number>, off: number): number;
 
-  writeLE(data: ArrayLike, off: number): number;
+  writeLE(data: ArrayLike<number>, off: number): number;
 
-  writeRaw(data: ArrayLike, off: number): number;
+  writeRaw(data: ArrayLike<number>, off: number): number;
 
   xor(b: N64): this;
 
   xorn(num: number): this;
 
-  static from(num: number | string | boolean | BNLike | ArrayLike | BigNumObject | null, base?: number | string): this;
+  static from(num: number | string | boolean | BNLike | ArrayLike<number> | BigNumObject | null, base?: number | string): this;
 
-  static fromBE(data: ArrayLike): this;
+  static fromBE(data: ArrayLike<number>): this;
 
   static fromBN(num: BNLike): this;
 
@@ -291,13 +291,13 @@ export class N64 {
 
   static fromJSON(json: string): this;
 
-  static fromLE(data: ArrayLike): this;
+  static fromLE(data: ArrayLike<number>): this;
 
   static fromNumber(num: number): this;
 
   static fromObject(obj: BigNumObject): this;
 
-  static fromRaw(data: ArrayLike): this;
+  static fromRaw(data: ArrayLike<number>): this;
 
   static fromString(str: string, base?: number | string): this;
 
@@ -315,18 +315,18 @@ export class N64 {
 
   static random(): this;
 
-  static readBE(data: ArrayLike, off: number): this;
+  static readBE(data: ArrayLike<number>, off: number): this;
 
-  static readLE(data: ArrayLike, off: number): this;
+  static readLE(data: ArrayLike<number>, off: number): this;
 
-  static readRaw(data: ArrayLike, off: number): this;
+  static readRaw(data: ArrayLike<number>, off: number): this;
 
   static shift(num: number, bits: number): this;
 
 }
 
 export class I64 extends N64 {
-  constructor(num: number | string | boolean | BNLike | ArrayLike | BigNumObject | null, base?: number | string);
+  constructor(num: number | string | boolean | BNLike | ArrayLike<number> | BigNumObject | null, base?: number | string);
 
   static LONG_MIN: Number;
   static LONG_MAX: Number;
@@ -339,7 +339,7 @@ export class I64 extends N64 {
 }
 
 export class U64 extends N64 {
-  constructor(num: number | string | boolean | BNLike | ArrayLike | BigNumObject | null, base?: number | string);
+  constructor(num: number | string | boolean | BNLike | ArrayLike<number> | BigNumObject | null, base?: number | string);
 
   static ULONG_MIN: Number;
   static ULONG_MAX: Number;
