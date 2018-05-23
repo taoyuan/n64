@@ -277,52 +277,51 @@ export class N64 {
 
   xorn(num: number): this;
 
-  static from(num: number | string | boolean | BNLike | ArrayLike<number> | BigNumObject | null, base?: number | string): this;
-
-  static fromBE(data: ArrayLike<number>): this;
-
-  static fromBN(num: BNLike): this;
-
-  static fromBits(hi: number, lo: number): this;
-
-  static fromBool(value: boolean): this;
-
-  static fromInt(num: number): this;
-
-  static fromJSON(json: string): this;
-
-  static fromLE(data: ArrayLike<number>): this;
-
-  static fromNumber(num: number): this;
-
-  static fromObject(obj: BigNumObject): this;
-
-  static fromRaw(data: ArrayLike<number>): this;
-
-  static fromString(str: string, base?: number | string): this;
-
   static isI64(obj: any): boolean;
 
   static isN64(obj: any): boolean;
 
   static isU64(obj: any): boolean;
 
-  static max(a: N64, b: N64): N64;
+  static max<T extends N64, K extends N64>(a: T, b: K): T | K;
 
-  static min(a: N64, b: N64): N64;
+  static min<T extends N64, K extends N64>(a: T, b: K): T | K;
 
-  static pow(num: number, exp: number): this;
+  static from<T extends N64>(num: number | string | boolean | BNLike | ArrayLike<number> | BigNumObject | null, base?: number | string): T;
 
-  static random(): this;
+  static fromBE<T extends N64>(data: ArrayLike<number>): T;
 
-  static readBE(data: ArrayLike<number>, off: number): this;
+  static fromBN<T extends N64>(num: BNLike): T;
 
-  static readLE(data: ArrayLike<number>, off: number): this;
+  static fromBits<T extends N64>(hi: number, lo: number): T;
 
-  static readRaw(data: ArrayLike<number>, off: number): this;
+  static fromBool<T extends N64>(value: boolean): T;
 
-  static shift(num: number, bits: number): this;
+  static fromInt<T extends N64>(num: number): T;
 
+  static fromJSON<T extends N64>(json: string): T;
+
+  static fromLE<T extends N64>(data: ArrayLike<number>): T;
+
+  static fromNumber<T extends N64>(num: number): T;
+
+  static fromObject<T extends N64>(obj: BigNumObject): T;
+
+  static fromRaw<T extends N64>(data: ArrayLike<number>): T;
+
+  static fromString<T extends N64>(str: string, base?: number | string): T;
+
+  static pow<T extends N64>(num: number, exp: number): T;
+
+  static random<T extends N64>(): T;
+
+  static readBE<T extends N64>(data: ArrayLike<number>, off: number): T;
+
+  static readLE<T extends N64>(data: ArrayLike<number>, off: number): T;
+
+  static readRaw<T extends N64>(data: ArrayLike<number>, off: number): T;
+
+  static shift<T extends N64>(num: number, bits: number): T;
 }
 
 export class I64 extends N64 {
@@ -336,6 +335,42 @@ export class I64 extends N64 {
 
   static INT64_MIN: U64;
   static INT64_MAX: U64;
+
+  static from<I64>(num: number | string | boolean | BNLike | ArrayLike<number> | BigNumObject | null, base?: number | string): I64;
+
+  static fromBE<I64>(data: ArrayLike<number>): I64;
+
+  static fromBN<I64>(num: BNLike): I64;
+
+  static fromBits<I64>(hi: number, lo: number): I64;
+
+  static fromBool<I64>(value: boolean): I64;
+
+  static fromInt<I64>(num: number): I64;
+
+  static fromJSON<I64>(json: string): I64;
+
+  static fromLE<I64>(data: ArrayLike<number>): I64;
+
+  static fromNumber<I64>(num: number): I64;
+
+  static fromObject<I64>(obj: BigNumObject): I64;
+
+  static fromRaw<I64>(data: ArrayLike<number>): I64;
+
+  static fromString<I64>(str: string, base?: number | string): I64;
+
+  static pow<I64>(num: number, exp: number): I64;
+
+  static random<I64>(): I64;
+
+  static readBE<I64>(data: ArrayLike<number>, off: number): I64;
+
+  static readLE<I64>(data: ArrayLike<number>, off: number): I64;
+
+  static readRaw<I64>(data: ArrayLike<number>, off: number): I64;
+
+  static shift<I64>(num: number, bits: number): I64;
 }
 
 export class U64 extends N64 {
@@ -349,4 +384,40 @@ export class U64 extends N64 {
 
   static UINT64_MIN: U64;
   static UINT64_MAX: U64;
+
+  static from<U64>(num: number | string | boolean | BNLike | ArrayLike<number> | BigNumObject | null, base?: number | string): U64;
+
+  static fromBE<U64>(data: ArrayLike<number>): U64;
+
+  static fromBN<U64>(num: BNLike): U64;
+
+  static fromBits<U64>(hi: number, lo: number): U64;
+
+  static fromBool<U64>(value: boolean): U64;
+
+  static fromInt<U64>(num: number): U64;
+
+  static fromJSON<U64>(json: string): U64;
+
+  static fromLE<U64>(data: ArrayLike<number>): U64;
+
+  static fromNumber<U64>(num: number): U64;
+
+  static fromObject<U64>(obj: BigNumObject): U64;
+
+  static fromRaw<U64>(data: ArrayLike<number>): U64;
+
+  static fromString<U64>(str: string, base?: number | string): U64;
+
+  static pow<U64>(num: number, exp: number): U64;
+
+  static random<U64>(): U64;
+
+  static readBE<U64>(data: ArrayLike<number>, off: number): U64;
+
+  static readLE<U64>(data: ArrayLike<number>, off: number): U64;
+
+  static readRaw<U64>(data: ArrayLike<number>, off: number): U64;
+
+  static shift<U64>(num: number, bits: number): U64;
 }
