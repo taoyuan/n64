@@ -259,7 +259,7 @@ export class N64 {
 
   toRaw(ArrayLike: ArrayLikeCtor): ArrayLike<number>;
 
-  toString(base?: number | string, pad?: number): any;
+  toString(base?: number | string, pad?: number): string;
 
   toU64(): U64;
 
